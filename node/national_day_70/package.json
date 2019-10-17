@@ -1,0 +1,16 @@
+{
+  "name": "national_day_70",
+  "version": "1.0.0",
+  "description": "-  node 项目\r 服务器端图片合成功能 服务器端资源\r 前端浏览器\r npm init -y 初始化为node后端项目\r 后端项目的描述文件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^3.0.2",
+    "images": "^3.0.2"
+  }
+}

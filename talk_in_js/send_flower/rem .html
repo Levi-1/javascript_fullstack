@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function init() {
+            var width = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = width / 10 + 'px';
+        }
+    init();
+    window.onresize = function(){
+        init();
+    }
+</script>
+<style>
+html{
+    /* font-size: 37.5px; */
+}
+.row{
+    display: flex;
+    margin: 5px 0px;
+}
+.row .box:nth-child(even){
+    background-color: pink;
+}
+.box{
+    width: 10rem;
+    height: 20px;
+    background-color:green;
+}
+.col-8{
+    width: 8rem;
+}
+.col-6{
+    width: 6rem;
+}
+.col-5 {
+    width: 5rem;
+}
+.col-4{
+    width: 4rem;
+}
+.col-3{
+    width: 3rem;
+}
+.col-2{
+    width: 2rem;
+}
+.col-1{
+    width: 1rem;
+}
+
+    </style>
+<body>
+    <div class="row">
+        <div class="box col-4"></div>
+        <div class="box col-6"></div>
+    </div>
+    <div class="row">
+        <div class="box col-5"></div>
+        <div class="box col-5"></div>
+    </div>
+    <div class="row">
+        <div class="box col-2"></div>
+        <div class="box col-8"></div>
+    </div>
+</body>
+</html>
