@@ -5,8 +5,8 @@
     </view>
   </view>
   <scroll-view class="category-right" scroll-y scroll-with-animation="true" scroll-into-view="{{toView}}">
-    <block wx:for="{{detail}}" wx:key="{{item.id}}">
-      <view class="cate-box" id="{{item.id}}">
+    <block wx:for="{{detail}}" wx:key="{{item.id}}" wx:for-index="inde">
+      <view data-inde="{{inde}}" class="cate-box {{curIndex != inde?'off':''}}" id="{{item.id}}">
         <view class="cate-banner">
           <image class="" src="{{item.banner}}" />
         </view>

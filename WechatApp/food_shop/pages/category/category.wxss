@@ -30,6 +30,9 @@
   padding: 40rpx;
   box-sizing: border-box;
 }
+.cate-box.off{
+  display: none;
+}
 .cate-banner image{
   display: block;
   width: 100%;
