@@ -7,17 +7,25 @@
     <title>Document</title>
 </head>
 <body>
+    <input type="text" value="0">
+    <button>更新</button>
+    <ul>
+        <li></li>
+    </ul>
     <script>
-        function httpGet(url,res){
-            setTimeout(()=>{
-                res('data')//将数据传递给回调函数 
-            },3000)
-        }
-
-        
-        httpGet('baidu.com',(res)=>{
-            console.log(res)
-        })    
+        fetch('http://localhost:8088').then(res => res.json()).then(data =>{
+            console.log('data',data)
+            const ulNode = document.querySelector('ul')
+            let html = data.map(movie=>{
+                return `
+                <li>
+                    <img src="${movie.picUrl}"/>
+                    <span>${movie.star}/${movie.title}/${movie.inq}</span>
+                </li>
+                `
+            }).join('')
+            ulNode.innerHTML = html
+        })
     </script>
 </body>
 </html>
