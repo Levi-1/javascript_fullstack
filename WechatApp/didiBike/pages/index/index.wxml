@@ -1,0 +1,13 @@
+<view class="map-box">
+    <!-- lbs业务 localtion base service -->
+    <map id="myMap"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    scale="{{scale}}"
+    show-location="{{true}}"
+    />
+    <cover-image class="map-icon map-icon_msg" bind:tap="toMsg" src="/images/icon-msg.png"/>
+    <cover-image class="map-icon map-icon_user" bind:tap="toUser" src="/images/icon-user.png"/>
+    <cover-image class="map-icon map-icon_reset" bind:tap="toReset" src="/images/reset.png"/>
+</view>
+<view class="map-btn"></view>
