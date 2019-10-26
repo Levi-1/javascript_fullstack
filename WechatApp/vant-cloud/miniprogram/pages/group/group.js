@@ -31,12 +31,12 @@ Page({
     wx.cloud.callFunction({
       name: 'getGroup',
       data: {},
-      success(res) { 
+      success(res) {
         console.log(res)
         self.setData({
-          groupList:res.result
+          groupList: res.result
         })
-      },     
+      },
       fail(error) {
         console.log(error)
       },
