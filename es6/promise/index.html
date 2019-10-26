@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = ''
+        function test() {
+            return new Promise((resolve,reject) => {//resolve表示成功，reject表失败
+                setTimeout(() => {
+                    name = '小熊'
+                    console.log(name)
+                    resolve('ok')//无resolve后续then将不会执行
+                }, 500)
+            })
+        }
+
+        function eat() {
+            return new Promise((resolve,reject)=>{
+                console.log(name+'恰蜜')
+                resolve('恰饱了')
+            })
+        }
+
+        function sleep(){
+            console.log(name+'呼呼大睡')
+        }
+
+//具备promise对象才能使用then，且then调用函数直接使用函数名.
+        test().then((res)=>{//res为前置函数resolve返回的值
+            console.log(res)//.then接受的为resolve返回的值， .catch返回的为reject返回的值。
+            eat()
+        })
+        .then((res)=>{
+            sleep()
+        })
+
+        // Promise.all([test(),eat()]).then((value)=>{//无论顺序all()中的方法须完全执行完。
+        //     console.log(value)
+        // })
+
+        Promise.race([test(),eat()]).then((value)=>{
+            console.log(value,'------->')
+            sleep()
+        })
+    </script>
+</body>
+
+</html>
