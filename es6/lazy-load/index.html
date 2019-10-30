@@ -43,7 +43,7 @@
         function lazyLoad(){
             var eles = document.querySelectorAll('img[data-origin][lazyload]')
             Array.prototype.forEach.call(eles,function(item,index){//将数组原型链上的作用域作用到eles上
-                var rect
+                var rect 
                 if(!item.dataset.origin) return
                 rect = item.getBoundingClientRect()//返回元素大小和其相对于视口的位置
                 if(rect.bottom >=0 && rect.top < viewHeight){
