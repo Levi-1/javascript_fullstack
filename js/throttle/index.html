@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流</title>
+</head>
+<style>
+    #container {
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        width: 100%;
+        background-color: #444444;
+        color: #fff;
+        font-size: 30px;
+    }
+    #container1 {
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        width: 100%;
+        background-color: #444444;
+        color: #fff;
+        font-size: 30px;
+    }
+</style>
+<script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+
+<body>
+    <!-- mouseOver resize -->
+    <div id="container">
+
+    </div>
+    <div id="container1">
+
+    </div>
+    <script>
+        const container = document.getElementById('container')
+        let init = 0
+        let previous = 0
+        function buyItNow() {
+            let now = new Date().getTime()
+            if (now - previous >= 1000){ // 间隔一秒触发
+                container.innerHTML = init++
+                previous = now
+            }
+                        
+        }
+        container.onmousemove = buyItNow // onmousemove事件
+
+        const container1 = document.getElementById('container1')
+        function addCart() {
+            container1.innerHTML = init++
+        }
+        container1.onmousemove = myThrottle(addCart, 1000)
+        
+        // 高阶函数:输入是函数，输出也是函数
+        // 体现的是过程抽象
+        // _.throttle(func, time)
+        function myThrottle (fun, wait) {
+            let previous = 0
+            return function() {
+                let now = new Date().getTime()
+                if(now - previous >= wait) {
+                    fun()
+                    previous = now
+                }
+            }
+        }
+    </script>
+</body>
+</html>
