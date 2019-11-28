@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .hidden {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+<div id="app">
+        <!-- 本地预览 img -->
+        <!-- 上传 -->
+    <el-button type="primary" @click="handleUpload">上传图片</el-button>
+    <div class="" v-loading="loading" element-loading-text="拼命上传中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+        <img :src="imgSrc" alt="">
+    </div>
+    <!-- 内容 -> url 服务器上的图片地址 -->
+    <!-- action 跳转到/upload -->
+    <!-- <form action="/upload" name="upload" method="POST" enctype="multipart/form-data"> 以二进制的格式发送表单 -->
+        <input type="file" name="avatar" id="avatar" class="hidden" @change="preview">
+        <input type="submit" name="" id="" @click="submit">
+    <!-- </form> -->
+</div>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data () {
+                return {
+                    imgSrc: '',
+                    loading: false
+                }
+            },
+            methods: {
+                handleUpload() {
+                    document.querySelector('.hidden').click() // 触发隐藏的元素的点击事件
+                },
+                submit() {
+                    this.loading = true
+                    const formData = new FormData()
+                    const avatarFile = document.querySelector('.hidden').files[0]
+                    formData.append('avatar', avatarFile)
+                    fetch('http://localhost:3000/upload', {
+                        method: 'POST',
+                        body: formData
+                    })    
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('upload', data)
+                    })
+                },
+                preview(event) {
+                    const file = event.target.files[0]
+                    const fileReader = new FileReader()
+                    fileReader.onload = () => {         // ?????????????????????????
+                        this.imgSrc = fileReader.result // ?????????????????????????
+                    }
+                    //data: //base64 
+                    fileReader.readAsDataURL(file) // ?????????????????????????
+                }
+            }
+        })
+    </script>
+    <script>
+        // const upload = document.forms['upload']
+        // upload.addEventListener('submit', (event) => {
+        //     event.preventDefault() // 将表单提交时默认事件阻止，组织后表单不会提交, 不会跳转刷新
+        //     const formData = new FormData()
+        //     const avatarFile = upload['avatar'].files[0]
+        //     if (!avatarFile) alert('请选择图片')
+        //     formData.append('avatar', avatarFile)
+        // })
+    </script>
+</body>
+</html>
