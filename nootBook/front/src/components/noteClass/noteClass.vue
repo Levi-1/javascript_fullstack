@@ -4,7 +4,7 @@
           <header>
               <div class="" @click="meaun"><van-icon name="wap-nav"></van-icon></div>
               <div>
-                  <van-icon name="like"></van-icon>
+                  <van-icon name="like" @click="publish"></van-icon>
                   <van-icon name="search"></van-icon>
               </div>
           </header>
@@ -79,6 +79,9 @@ export default {
         },
         noteList (title) {
             this.$router.push({path: '/noteList', query:{title:title}}) //query 会将参数拼接在路由后方
+        },
+        publish () {
+            this.$router.push({path: '/publishNote'})
         }
     }
 }
