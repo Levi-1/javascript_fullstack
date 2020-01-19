@@ -10,6 +10,8 @@
 <script>
 import config from '../assets/default'
 export default {
+    created() {this.$toast('提示文案');},
+    
     name: 'index',
     data() {
         return {
@@ -33,7 +35,7 @@ export default {
             }
         },
         register () {
-            this.$push({path: '/register'})
+            this.$router.push({ path: '/register' })
         }
     }
 }

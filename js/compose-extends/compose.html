@@ -64,7 +64,7 @@
         }
 
         function mycompose(...fns) {
-
+            
             return function(params) {
                 let res = fns.pop()(params)
                 while (fns.length) {

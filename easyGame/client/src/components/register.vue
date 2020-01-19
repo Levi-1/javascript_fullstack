@@ -35,7 +35,7 @@ export default {
             }
         },
         cancel () {
-            this.$push({path: '/'})
+            this.$router.push({path: '/'})
         }
     },
     watch: {

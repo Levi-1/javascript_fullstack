@@ -1,0 +1,48 @@
+.index {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    .search {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 25rpx 0 10rpx;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+        height: 88rpx;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        div:nth-child(1) {
+            width: 115rpx;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 20rpx;
+            padding-right: 15rpx;
+        }
+        div:nth-child(2) {
+            flex: 1;
+            position: relative;
+            input{
+                width: 100%;
+                height: 56rpx;
+                border-radius: 8rpx;
+                background: #ededed;
+                box-sizing: border-box;
+                padding-left: 40rpx;
+            }
+            .icon{
+                position: absolute;
+                top: 15rpx;
+                left: 10rpx;
+                background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579343181253&di=11f3831e6da8f01eec6ae376958a7a5e&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F00%2F86%2F85%2F4756ec346692cd0.jpg');
+                background-size: 100%;
+                width: 28rpx;
+                height: 28rpx;
+                margin-right: 10rpx;
+            }
+        }
+    }
+}

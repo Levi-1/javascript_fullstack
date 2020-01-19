@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person() { this.age = 30 }
+        Person.prototype.say = function () {}
+        var p = new Person()
+        console.log(p.__proto__ === Person.prototype)
+        console.log(Person.prototype.constructor === Person)
+        console.log(Person.prototype.__proto__ === Object.prototype)
+
+        function Student () { this.h = 20}
+
+        // Student.prototype.hi = function () {}
+        Student.prototype.__proto__ = Person.prototype
+        // 1. 
+        function Student1 () { this.h = 20}      
+        // Student1.prototype = new Person()
+        // 2.
+        // Student.prototype = Object.create(Person.prototype) // 类似将person上的prototype复制
+        function myCreate (obj) {
+            var F = function () {}
+            F.prototype = obj
+            return new F()
+        }
+        // 3.
+        // function Student1 () {
+        //     // 继承属性
+        //     Person.call(this)
+        // }
+        // // 继承方法
+        // Student1.prototype = Object.create(Person.prototype)
+        // // 修正constructor
+        // Student1.prototype.constructor = Student1
+        var s = new Student()
+        console.log(s)
+        var s1 = new Student1()
+        console.log(s1)
+        console.log(Student1.prototype)
+        
+    </script>
+</body>
+</html>
