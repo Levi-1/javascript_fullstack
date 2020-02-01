@@ -8,6 +8,15 @@
         <span class="icon"></span>
       </div>
     </div>
+    <div class="swiper">
+      <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" cicular="true" duration="500">
+        <block v-for="(item, index) in banner" :key="index">
+          <swiper-item class="swiper-item">
+            <image class="silde-image" :src="item.image_url"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </div>
   </div>
 </template>
 
@@ -15,9 +24,11 @@
 import amapFile from '../../utils/amap-wx.js'
 import { mapState } from 'vuex'
 import { mapMutations } from 'vuex'
+import { get } from '../../utils/index.js'
 export default {
   data () {
     return {
+      banner: []
     }
   },
   computed: {
@@ -67,6 +78,10 @@ export default {
           _this.update({ cityName: '北京'})
         }
       })
+    },
+    async getData () {
+      const data = await get('/index/index')
+      console.log(data)
     }
   }
 }
