@@ -5,7 +5,7 @@ const CONF = {
         host: 'localhost',
         database: 'shopData',
         password: '123456',
-        user: 'rooter',
+        user: 'root',
         char: 'utf8mb4'
     }
 
