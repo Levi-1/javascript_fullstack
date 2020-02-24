@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        .caculator {
+            margin: 0 auto;
+            width: 120px;
+            display: block;
+        }
+        .show {
+            display: inline-block;
+
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        table{
+            margin: 0 auto;
+            width: 100%;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="caculator">
+    <div class="show">
+        <input type="text" name="" id="in" style=>
+        <input type="text" name="" id="out" style="height: 20px;">
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td onclick="Func(this)">7</td>
+                <td onclick="Func(this)">8</td>
+                <td onclick="Func(this)">9</td>
+                <td onclick="Func(this)">+</td>
+                <td rowspan="2">AC</td>
+            </tr>
+            <tr>
+                <td onclick="Func(this)">4</td>
+                <td onclick="Func(this)">5</td>
+                <td onclick="Func(this)">6</td>
+                <td onclick="Func(this)">-</td>
+            </tr>
+            <tr>
+                <td onclick="Func(this)">1</td>
+                <td onclick="Func(this)">2</td>
+                <td onclick="Func(this)">3</td>
+                <td onclick="Func(this)">*</td>
+                <td rowspan="2" >CE</td>
+            </tr>
+            <tr>
+                <td onclick="Func(this)">0</td>
+                <td onclick="Func(this)">.</td>
+                <td onclick="Func(this)">=</td>
+                <td onclick="Func(this)">/</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <script>
+        var arr = []
+        tds = document.getElementsByTagName('td')
+        input_ = document.getElementById('in')
+        function Func (element) {
+            var value = element.innerText
+            if (value == '=') {
+                caculator(arr)
+            } else {
+                arr.push(value)
+                input_.value += value
+            }
+        }
+        function caculator (arr) {
+            exp = arr.join('')
+            out_val = eval(exp)
+            document.getElementById('out').value = out_val
+            arr = []
+        }
+        // for (var i = 1; i <= 9; i++) {
+        //     for (var j = 1; j <= i; j++){
+        //         document.write(j,'*',i,'=',i*j,'\t')
+        //     }
+        //     document.write('</br>')
+        // }
+
+        // function greet(person) {
+        //     if (person.name == 'l') {
+        //         alert('hey amy')
+        //     } else {
+        //         alert('hey and')
+        //     }
+        // }
+        // greet({ name: 'l'})
+
+    </script>
+</body>
+</html>
