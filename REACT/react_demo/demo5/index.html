@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js" ></script>
+    <script src="../build/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <!-- this.props.children -->
+    <script type="text/babel">
+        class NoteList extends React.Component {
+            render() {
+                return (
+                    <ol>
+                        {   /* 通常使用React.Children来处理this.props.children,便于处理子节点，不需要考虑其值的类型*/
+                            React.Children.map(this.props.children, function(child) {
+                                return <li>{child}</li>
+                            })
+                        }
+                    </ol>
+                )
+            }
+        }
+        // this.props对象的属性与组件的属性是一一对应的
+        
+        // 但是this.props.chiledren属性是例外，他表示组件的所有子节点
+        
+        // this.props.children 的值有三种情况，如果当前组件没有子节点
+        // 则其值为undefined，若当前组件的子节点数为一，则其值的类型为object
+        // 如果有多个子节点，其值的类型为array
+
+        ReactDOM.render ( // 组件被调用是内部再插入html，改内容会被视为参数
+            <NoteList name='hair'> 
+                <span>hello</span> {/*子节点*/}
+                <span>world</span>
+            </NoteList>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

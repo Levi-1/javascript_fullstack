@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    width: 100%;
+}
+.container {
+    border:4px solid brown;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+header {
+    border-bottom: 1px solid grey;
+    margin: 0 15px;
+}
+nav {
+    margin-top: 10px;
+}
+header p {
+    margin-left: 25px;
+    font-style: italic;
+}
+li{
+    display: inline;
+    list-style: none;
+    color: orange;
+    margin-left: 15px;
+}
+article{
+    width: 100%;
+    position: relative;
+}
+section {
+    top: 0px;
+    width: 49%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+
+h2 {
+    margin-top: 20px;
+}
+section p {
+    margin-top: 20px;
+    line-height: 20px;
+}
+
+span  {
+    margin-top: 15px;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    top: 0px;
+}
+img {
+    width: 100%;
+}
+footer {
+    text-align: center;
+    line-height: 100px;
+    height: 100px;
+}
