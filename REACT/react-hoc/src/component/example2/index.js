@@ -10,9 +10,11 @@ function HOC(WrapperComponent) {
             }
         }
         onChange = (event) => {
+            // this.setState 在此处为异步
             this.setState({
                 name: event.target.value
             })
+            console.log(this.state.name)
         }
         render() {
             const newProps = {

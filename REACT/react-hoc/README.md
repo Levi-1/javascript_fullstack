@@ -81,3 +81,7 @@ higher order Component
   3. 捕获|劫持被处理的生命周期
 
 <Comp {...this.props} mouse={this.state}/>  ...this.props
+
+如何把在高阶组件中定义的公共逻辑 分发到低级组件中使用
+  高阶组件调用低级组件时传递参数
+  低阶组件定义时接收参数
