@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Card, Timeline } from 'antd'
+import { Link }  from 'react-router-dom'
 import { ClockCircleOutlined } from '@ant-design/icons'
 
 class Archive extends Component {
@@ -101,8 +102,10 @@ class Archive extends Component {
                     <Timeline.Item style={{lineHeight: "20px"}} dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />} color="red"><span style={{fontSize:20}}>{this.state.data[0].createdAt.split('-')[0]}</span></Timeline.Item>
                     {this.state.data.map(v => (
                         <Timeline.Item>
-                            <span style={{color: '#1890FF', margin:'0 20px 0 0'}}>{v.createdAt.split(' ')[0]}</span>
-                            <span style={{color: '#1890FF'}}>{v.title}</span>
+                            <Link>
+                                <span style={{color: '#1890FF', margin:'0 20px 0 0'}}>{v.createdAt.split(' ')[0]}</span>
+                                <span style={{color: '#1890FF'}}>{v.title}</span>
+                            </Link>
                         </Timeline.Item>
                     ))}
                 </Timeline>

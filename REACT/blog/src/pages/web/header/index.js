@@ -19,7 +19,7 @@ class HeaderCustom extends Component {
         const key = sessionStorage.getItem('webKey') || '0'
         const list = menus.filter(v => v.menu)
         const menuList = list.map((item, i) => {
-            return <Menu.Item key={i}>
+            return <Menu.Item key={i} onClick={() => {sessionStorage.setItem('webKey', String(i))}}>
                 <Link to={item.path}>{React.createElement(item.icon)}<span className='nav-text'>{item.title}</span></Link>
             </Menu.Item>
         })
@@ -34,7 +34,7 @@ class HeaderCustom extends Component {
                         </div>
                     </Col>
                     <Col className='mobile' lg={{span:14}} md={{span: 14}} xs={{span: 24}}>
-                        <Menu mode='horizontal' defaultSelectedKeys={['0']}>
+                        <Menu mode='horizontal' defaultSelectedKeys={[key]}>
                          { menuList }
                         </Menu>
                     </Col>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { List, Divider } from 'antd'
+import { Link } from 'react-router-dom'
 
 class Star extends  Component{
     constructor (props) {
@@ -29,7 +30,9 @@ class Star extends  Component{
                 pageSize: 5
             }} header={<div style={{ fontSize:'1.2em'}}>文章收藏</div>} style={{backgroundColor: '#fff', padding: '0 30px 20px'}} dataSource={this.state.data} renderItem={item => (
                 <List.Item>
-                    {item.title}
+                    <Link>
+                        {item.title}
+                    </Link>
                 </List.Item>
             )}>
             </List>
