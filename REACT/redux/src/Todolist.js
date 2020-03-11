@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css';
 import store from './store/index'
-import { getInputChangeAction, getAddItemAction, getDeleteAction, initListAction } from './store/actionCreator'
+import { getInitList, getInputChangeAction, getAddItemAction, getDeleteAction } from './store/actionCreator'
 // Redux = flux + Reduce
 import UI from './TodolistUI'
 import axios from 'axios'
+
 
 class App extends Component {
   constructor(props) {
@@ -31,26 +32,22 @@ class App extends Component {
     store.dispatch(action) // 为什么此处向仓库中添加字段，能够直接影响到本页的state
     console.log(this.state.list)// 而input输入框中的修改却需要 通过subscribe来触发方法重新获取仓库中的数据？
   }
-  handleItemDelete(index){
+  handleItemDelete(index) {
     const action = getDeleteAction(index)
     store.dispatch(action)
   }
   componentDidMount() {
-    axios.get('https://api.github.com/users/octocat/gists').then((res) => {
-      console.log(res)
-      const data = res.data
-      const action = initListAction(Object.keys(data[0].owner))
-      store.dispatch(action)
-      // console.log(action)
-    })
-  }
+    const action = getInitList()
+    store.dispatch(action)
+    console.log(action)
+  }                // 此时store已经集成了thunk的功能，所以支持dispatch一个函数，且会自动执行这个函数
   render() {
     return (
       <UI inputValue={this.state.inputValue}
-      handleButtonClick={this.handleButtonClick}
-      handleInputChange={this.handleInputChange}
-      handleItemDelete={this.handleItemDelete}
-      list={this.state.list}></UI>
+        handleButtonClick={this.handleButtonClick}
+        handleInputChange={this.handleInputChange}
+        handleItemDelete={this.handleItemDelete}
+        list={this.state.list}></UI>
     )
   }
 }

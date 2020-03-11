@@ -93,3 +93,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 # Redux中发送异步请求获取数据
 
+# redux-thunk 实现ajax数据请求
+
+# 到底什么是Redux中间件
+action->store 之间的部件
+
+# redux-saga中间件 
+能够进行异步管理 例如接口请求
