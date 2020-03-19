@@ -5,6 +5,13 @@ export const HeaderWrapper = styled.div`
   position: relative;
   height: 58px;
   border-bottom: 1px solid #f0f0f0;
+  a{
+    text-decoration: none;
+    color: #333;
+    &.active {
+    color: #ea6f5a;
+  }
+  }
 `;
 export const Logo = styled.a.attrs({
   href: '/'
@@ -37,9 +44,6 @@ export const NavItem = styled.div`
   &.right {
     float: right;
     color: #969696;
-  }
-  &.active {
-    color: #ea6f5a;
   }
 `;
 export const SearchWrapper = styled.div`

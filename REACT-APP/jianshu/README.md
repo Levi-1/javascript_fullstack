@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+# 在登录修改了按钮文本为 退出并且跳转到主页。但是如果使用a标签包裹退出，点击后会跳转到登录页面，若不使用a标签或使用link包裹都能改变退出状态且不会跳转页面。
