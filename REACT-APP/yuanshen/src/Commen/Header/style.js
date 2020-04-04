@@ -4,7 +4,9 @@ export const HeaderWrapper = styled.div`
     width: 100%;
     height: 66px;
     background-color: rgba(17, 17, 17, 0.75);
-    position: relative;
+    z-index: 999;
+    position: fixed;
+    top: 0;
 `
 export const Icon = styled.div`
     float: left;

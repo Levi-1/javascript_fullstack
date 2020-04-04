@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Commen/Header'
+import Footer from './Commen/Footer'
 import { BrowserRouter, Route } from 'react-router-dom'
 import {Main, World, News, Community, Comics, Charcator}from './Pages'
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/community" component={Community}></Route>
         <Route path="/news" component={News}></Route>
         <Route path="/world" component={World}></Route>
+        <Footer></Footer>
       </BrowserRouter>
     </>
   );
