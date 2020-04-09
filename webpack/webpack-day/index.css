@@ -1,0 +1,9 @@
+body {
+    background-color: red;
+}
+
+.pic {
+    width: 400px;
+    height: 200px;
+    column-count: 3;
+}
