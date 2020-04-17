@@ -84,11 +84,12 @@ export const Footer = styled.div`
 export const TopicTag = styled.div`
     height: 24px;
     border-radius: 12px;
-    background-color: #ccc;
+    background-color: #f5f5f5;
     font-size:12px;
     color: #666;
     line-height: 24px;
     padding: 0 5px;
+    margin-right: 5px;
 `
 export const DataTag = styled.div`
     height: 18px;
@@ -122,6 +123,7 @@ export const QRcodeWrapper = styled.div`
     height: 140px;
     padding: 20px 14px;
     box-sizing: border-box;
+    border-radius: 5px;
     a{
         text-decoration: none;
         width: 100%;
@@ -149,15 +151,32 @@ export const TopicWrapper = styled.div`
     background-color: #fff;
     margin-top: 20px;
     width: 100%;
-    height: 380px;
     box-sizing: border-box;
+    border-radius: 5px;
 `
 export const TopicItemWrapper = styled.div`
-    padding: 20px;
+    padding: 0 20px 30px 20px;
 `
 
 export const TopicItem = styled.div`
-
+    height: 50px;
+    margin: 20px 0 0 0;
+    border-radius: 10px;
+    display: flex;
+    span{
+        height: 100%;
+        display: inline-block;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    p{
+        padding-left: 20px;
+        font-size: 14px;
+        color: #666;
+    }
+    img{
+        height: 100%;
+    }
 `
 export const TopicHeader = styled.div`
     padding: 0 20px;
@@ -169,4 +188,66 @@ export const TopicHeader = styled.div`
         color: #999;
     }
     border-bottom: 1px solid #ccc;
+`
+
+export const UserRecmdList = styled.div`
+    padding: 0 20px 30px 20px;
+`
+export const UserRecomdItem = styled.div`
+    height: 44px;
+    width: 100%;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    span.avatar{
+        display: inline-block;
+        height: 44px;
+        border-radius: 22px;
+        border: 1px solid #ccc;
+        position:relative;
+        margin-right: 10px;
+        img{
+            width:44px;
+        }
+    }
+    span.avatarTag{
+        position: absolute;
+        height:14px;
+        width: 14px;
+        right:0;
+        bottom: 0;
+        img{
+            width: 100%;
+        }
+    }
+    .nickName{
+        display: inline-block;
+        width: 70px;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+        color: #666;
+    }
+    .foucsButton{
+        height: 26px;
+        width: 70px;
+        background-color: #4cc3ff;
+        color: #fff;
+        text-align:center;
+        line-height: 26px;
+        border-radius: 13px;
+        margin-left: 5px;
+    }
+    .levelimg{
+        height: 16px;
+        vertical-align: top;
+    }
+    p{
+        font-size: 12px;
+        color: #999;
+        margin: 0;
+    }
 `

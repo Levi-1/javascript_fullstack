@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
     height: 62px;
     background-color: #2d2f33;
     position: fixed;
+    z-index: 999;
 `
 export const HeaderContainer = styled.div`
     margin: 0 auto;

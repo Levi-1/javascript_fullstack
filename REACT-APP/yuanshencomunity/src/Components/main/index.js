@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import avatarImg from '../../assets/img/avatar1.png'
-import levelImg from '../../assets/img/level3.png'
 import qr from '../../assets/img/qrcode_ys.png'
 import {
     MainWrapper,
@@ -8,59 +6,53 @@ import {
     BannerContainer,
     LeftContainer,
     RightContainer,
-    ArticleList,
-    UserInfo,
-    Avatar,
-    Level,
-    Date,
-    Title,
-    Content,
-    Footer,
-    TopicTag,
-    DataTag,
-    ArticleItem,
-    LoadButton,
     QRcode,
-    QRcodeWrapper,
-    TopicWrapper,
-    TopicHeader,
-    TopicItemWrapper,
-    TopicItem
+    QRcodeWrapper
 } from './style'
+import ArticleList from './component/ArticleList'
+import Topic from './component/Topic'
+import UserList from './component/UserList'
+import store from '../../Store/index'
+import axios from 'axios'
+import { ArticleDataAction, ArticleStatAction, TopicAction } from './store/actionCreator'
 class Main extends Component {
+    constructor(props) {
+        super(props)
+        this.state = store.getState().homeReducer
+        this.handleStoreChange = this.handleStoreChange.bind(this)
+        store.subscribe(this.handleStoreChange) // 监听store数据变化
+    }
+    handleStoreChange() {
+         // 在store数据改变后 修改数据源
+        this.setState(store.getState().homeReducer)
+        console.log(this.state)
+    }
+    componentDidMount() {
+        axios.get('/api/articleData.json').then((res) => {
+            const action = ArticleDataAction(res.data)
+            store.dispatch(action)
+        })
+        // axios.get('/api/articleTopic.json').then((res) => {
+        //     const action = ArticleStatAction(res.data)
+        //     // console.log(res.data)
+        //     store.dispatch(action)
+        // })
+        // axios.get('/api/articleStat.json').then((res) => {
+        //     const action = TopicAction(res.data)
+        //     // console.log(res.data)
+        //     store.dispatch(action)
+        // })
+
+
+    }
     render() {
         return (
             <>
                 <MainWrapper>
                     <Container>
                         <BannerContainer></BannerContainer>
-
                         <LeftContainer>
-                            <ArticleList>
-                                <ArticleItem>
-                                    <UserInfo>
-                                        <Avatar>
-                                            <img src={avatarImg} alt="" />
-                                        </Avatar>
-                                        咸鱼喵
-                                        <Level><img src={levelImg} alt="" /></Level>
-                                        <Date>04-13</Date>
-                                    </UserInfo>
-                                    <Title>芭芭拉</Title>
-                                    <Content></Content>
-                                    <Footer>
-                                        <TopicTag>同人作品</TopicTag>
-                                        <DataTag>
-                                            eye: 111
-                                            com: 76
-                                            good: 123
-                                        </DataTag>
-                                    </Footer>
-                                </ArticleItem>
-                                <LoadButton>
-                                    <span>点击加载更多</span>
-                                </LoadButton>
-                            </ArticleList>
+                            <ArticleList recommendedList={this.state.recommendedList} statList={this.state.statList}></ArticleList>
                         </LeftContainer>
                         <RightContainer>
                             <QRcodeWrapper>
@@ -73,18 +65,8 @@ class Main extends Component {
                                         </span>
                                     </QRcode></a>
                             </QRcodeWrapper>
-                            <TopicWrapper>
-                                <TopicHeader>
-                                    <h3>推荐话题</h3>
-                                    <span>更多</span>
-                                </TopicHeader>
-                                <TopicItemWrapper>
-                                    <TopicItem>
-
-                                    </TopicItem>
-                                </TopicItemWrapper>
-
-                            </TopicWrapper>
+                            <Topic TopicList={this.state.TopicList}></Topic>
+                            <UserList></UserList>
                         </RightContainer>
                     </Container>
                 </MainWrapper>
