@@ -7,6 +7,12 @@ import {
     TopicItem,
 } from '../style'
 class Topic extends Component {
+    constructor(props) {
+        super(props)
+    }
+    componentDidMount() {
+        console.log(this.props.TopicList)
+    }
     render() {
         return (
             <TopicWrapper>
@@ -15,18 +21,13 @@ class Topic extends Component {
                     <span>更多</span>
                 </TopicHeader>
                 <TopicItemWrapper>
-                    <TopicItem>
-                        <span><img src={topicimg} alt="" /></span><p>再临测试内容</p>
-                    </TopicItem>
-                    <TopicItem>
-                        <span><img src={topicimg} alt="" /></span><p>再临测试内容</p>
-                    </TopicItem>
-                    <TopicItem>
-                        <span><img src={topicimg} alt="" /></span><p>再临测试内容</p>
-                    </TopicItem>
-                    <TopicItem>
-                        <span><img src={topicimg} alt="" /></span><p>再临测试内容</p>
-                    </TopicItem>
+                    {
+                        this.props.TopicList.map((item, index) => (
+                            <TopicItem key={index}>
+                                <span><img src={item.cover} alt="" /></span><p>{item.name}</p>
+                            </TopicItem>
+                        ))
+                    }
                 </TopicItemWrapper>
             </TopicWrapper>
         )

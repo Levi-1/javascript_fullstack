@@ -22,13 +22,13 @@ class Article extends Component {
         }
     }
     render() {
+        const {recommendedList} = this.props
         return (
             <ArticleList>
                 {
-                    this.props.recommendedList.map((item, index) => (
+                    recommendedList.map((item, index) => (
                         
                         <ArticleItem key={index}>
-                            {console.log(item)}
                             <UserInfo>
                                 <Avatar>
                                     <img src={item.user.avatar_url} alt="" />
@@ -47,9 +47,9 @@ class Article extends Component {
                                 }
                                 
                                 <DataTag>
-                                    eye: 111
-                                    com: 76
-                                    good: 123
+                                    eye: {item.stat.view_num}
+                                    com: {item.stat.reply_num}
+                                    good: {item.stat.like_num}
                                         </DataTag>
                             </Footer>
                         </ArticleItem>

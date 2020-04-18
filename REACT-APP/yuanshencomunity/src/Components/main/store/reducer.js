@@ -21,7 +21,7 @@ export default (state = defaultState, action) => {
 
     if (action.type === GETTOPIC) {
         const newState = JSON.parse(JSON.stringify(state))
-        newState.TopicList = action.value.recommended_topics
+        newState.TopicList = action.value.recommended_topics.list
         // console.log(action.value.data)
         return newState
     }
