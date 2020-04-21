@@ -1,19 +1,12 @@
-import React, { Component } from 'react'
-import topicimg from '../../../assets/img/zai.jpg'
+import React from 'react'
 import {
     TopicWrapper,
     TopicHeader,
     TopicItemWrapper,
     TopicItem,
 } from '../style'
-class Topic extends Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        console.log(this.props.TopicList)
-    }
-    render() {
+const Topic = (props) => {
+
         return (
             <TopicWrapper>
                 <TopicHeader>
@@ -22,7 +15,7 @@ class Topic extends Component {
                 </TopicHeader>
                 <TopicItemWrapper>
                     {
-                        this.props.TopicList.map((item, index) => (
+                        props.TopicList.map((item, index) => (
                             <TopicItem key={index}>
                                 <span><img src={item.cover} alt="" /></span><p>{item.name}</p>
                             </TopicItem>
@@ -32,6 +25,6 @@ class Topic extends Component {
             </TopicWrapper>
         )
     }
-}
+
 
 export default Topic

@@ -1,28 +1,22 @@
-import { GETARTICLEDATA, GETARTICLESTAT, GETTOPIC } from './actionType'
+import {GETHOMEPAGEDATA} from './actionType'
 const defaultState = {
     recommendedList: [],
-    statList: [],
     TopicList: []
 }
 
 export default (state = defaultState, action) => {
-    if (action.type === GETARTICLEDATA) {
+    if (action.type === GETHOMEPAGEDATA) {
         const newState = JSON.parse(JSON.stringify(state))
-        newState.recommendedList = action.value.recommended_posts
-        return newState
-    }
-
-    if (action.type === GETARTICLESTAT) {
-        const newState = JSON.parse(JSON.stringify(state))
-        newState.statList = action.value.data
-        // console.log(action.value.recommended_topics)
-        return newState
-    }
-
-    if (action.type === GETTOPIC) {
-        const newState = JSON.parse(JSON.stringify(state))
-        newState.TopicList = action.value.recommended_topics.list
-        // console.log(action.value.data)
+        let RecmdList = []
+        for (let index in action.recommendedList) {
+            RecmdList.push({
+                ...action.recommendedList[index],
+                stat: action.statList[index].stat
+            })
+        }
+        newState.recommendedList = RecmdList
+        newState.TopicList = action.TopicList
+        // console.log(action)
         return newState
     }
     return state
